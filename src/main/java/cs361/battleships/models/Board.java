@@ -30,10 +30,8 @@ public class Board {
 		int maxIndex = 10 - shipLength + 1;
 
 		// Check if ship is placed outside boundaries
-		if (isVertical && x > maxIndex || !isVertical && columnIndex > maxIndex) {
-			if (checkOverlap(ship)) {
-				return false;
-			}
+		if (isVertical && x > maxIndex || !isVertical && columnIndex > maxIndex || checkOverlap(ship)) {
+			return false;
 		}
 
 		// Add ship to ships array
@@ -42,6 +40,11 @@ public class Board {
 		return true;
 	}
 
+	/**
+	 * Checks if new ship overlaps with existing ships on the board
+	 * @param newShip Ship to be added to board
+	 * @return true if new ship overlaps with existing ships, false otherwise
+	 */
 	private boolean checkOverlap(Ship newShip) {
 		// Iterate over existing ships
 		for (Ship ship : this.ships) {
