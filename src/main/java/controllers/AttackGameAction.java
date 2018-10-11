@@ -1,7 +1,7 @@
 package controllers;
 
-        import com.fasterxml.jackson.annotation.JsonProperty;
-        import cs361.battleships.models.Game;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import cs361.battleships.models.Game;
 
 public class AttackGameAction {
 

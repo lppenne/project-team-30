@@ -19,16 +19,16 @@ function makeGrid(table, isPlayer) {
 function markHits(board, elementId, surrenderText) {
     board.attacks.forEach((attack) => {
         let className;
-    if (attack.result === "MISS")
-        className = "miss";
-    else if (attack.result === "HIT")
-        className = "hit";
-    else if (attack.result === "SUNK")
-        className = "hit"
-    else if (attack.result === "SURRENDER")
-        alert(surrenderText);
-    document.getElementById(elementId).rows[attack.location.row-1].cells[attack.location.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add(className);
-});
+        if (attack.result === "MISS")
+            className = "miss";
+        else if (attack.result === "HIT")
+            className = "hit";
+        else if (attack.result === "SUNK")
+            className = "hit"
+        else if (attack.result === "SURRENDER")
+            alert(surrenderText);
+        document.getElementById(elementId).rows[attack.location.row-1].cells[attack.location.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add(className);
+    });
 }
 
 function redrawGrid() {
