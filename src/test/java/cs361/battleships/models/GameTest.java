@@ -41,4 +41,28 @@ public class GameTest {
 
         assertTrue(isRow);
     }
+
+    // Tests whether booleans are generated randomly. If the same bool is returned more than 20 times in a row, it's
+    // probably not random. Probability of this happening for random bool is 1/(2^20) = 1/1,048,576
+    @Test
+    public void testRandVerical(){
+        Game someGame = new Game();
+
+        boolean isVertical;
+        boolean wasVertical = someGame.randVertical();
+        boolean isNotSame = false;
+
+        for (int i=1; i<20; i++){
+            isVertical = someGame.randVertical();
+
+            if (isVertical != wasVertical){
+                isNotSame = true;
+            }
+
+            wasVertical = isVertical;
+        }
+
+        assertTrue(isNotSame);
+
+    }
 }
