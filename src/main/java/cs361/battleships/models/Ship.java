@@ -25,7 +25,7 @@ public class Ship {
 		return null;
 	}
 
-	public String getKind() {
+	public String getKind() {.
 	    return kind;
     }
 }
