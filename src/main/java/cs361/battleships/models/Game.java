@@ -53,6 +53,7 @@ public class Game {
         // Grid of size 10 is hardcoded into this. TODO: make grid size a seperately defined constant
         int someNumber = rand.nextInt(10) + 65;
         char theCol = (char)someNumber;
+        return theCol;
     }
 
     private int randRow() {
