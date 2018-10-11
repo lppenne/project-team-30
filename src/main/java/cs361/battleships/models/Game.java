@@ -48,7 +48,9 @@ public class Game {
         return true;
     }
 
-    private char randCol() {
+    // All three of these are public. I can't think of a reason why they should specifically be private,
+    // also, it makes testing easier
+    public char randCol() {
         Random rand = new Random();
         // Grid of size 10 is hardcoded into this. TODO: make grid size a seperately defined constant
         int someNumber = rand.nextInt(10) + 65;
@@ -56,13 +58,13 @@ public class Game {
         return theCol;
     }
 
-    private int randRow() {
+    public int randRow() {
         Random rand = new Random();
         // This is also hardcoded as a grid size of 10
         return rand.nextInt(10) + 1;
     }
 
-    private boolean randVertical() {
+    public boolean randVertical() {
         Random rand = new Random();
         return rand.nextBoolean();
     }

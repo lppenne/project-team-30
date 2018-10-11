@@ -2,38 +2,43 @@ package cs361.battleships.models;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 
-public class ResultTest {
+
+public class GameTest {
 
     @Test
-    public void testMiss() {
-        Square location = new Square(1, 'A');
-        Result resultMiss = new Result(location, AttackStatus.MISS, null);
+    public void testRandCol(){
+        Game someGame = new Game();
 
-        assertEquals(resultMiss.getResult(), AttackStatus.MISS);
+        char someCol = someGame.randCol();
+        boolean isLetter = false;
 
-        assertEquals(resultMiss.getLocation(), location);
+        // Check if the random column is one of the first 10 letters
+        // Does not check that the random col can be any of these, just that it is one of these
+        if (someCol == 'A' || someCol == 'B' || someCol == 'C' ||
+            someCol == 'D' || someCol == 'E' || someCol == 'F' ||
+            someCol == 'G' || someCol == 'H' || someCol == 'I' ||
+            someCol == 'J') {
+            isLetter = true;
+        }
 
-        assertNull(resultMiss.getShip());
+        assertTrue(isLetter);
     }
 
     @Test
-    public void testDefautConstructor() {
-        Result someResult = new Result();
+    public void testRandRow(){
+        Game someGame = new Game();
 
-        assertNull(someResult.getLocation());
-        assertNull(someResult.getResult());
+        int someRow = someGame.randRow();
 
-        Square location = new Square(2, 'B');
+        boolean isRow = false;
 
-        someResult.setLocation(location);
-        // Note: whenever AttackStatus is HIT, there should be a non-null ship in the result
-        someResult.setResult(AttackStatus.HIT);
+        if (someRow < 11 && someRow > 0){
+            isRow = true;
+        }
 
-        assertEquals(someResult.getResult(), AttackStatus.HIT);
-        assertEquals(someResult.getLocation(), location);
+        assertTrue(isRow);
     }
 }
