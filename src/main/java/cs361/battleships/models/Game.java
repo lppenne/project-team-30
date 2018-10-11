@@ -2,6 +2,8 @@ package cs361.battleships.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Random;
+
 import static cs361.battleships.models.AttackStatus.*;
 
 public class Game {
@@ -47,17 +49,20 @@ public class Game {
     }
 
     private char randCol() {
-        // TODO implement
-        return 'X';
+        Random rand = new Random();
+        // Grid of size 10 is hardcoded into this. TODO: make grid size a seperately defined constant
+        int someNumber = rand.nextInt(10) + 65;
+        char theCol = (char)someNumber;
     }
 
     private int randRow() {
-        // TODO implement
-        return 0;
+        Random rand = new Random();
+        // This is also hardcoded as a grid size of 10
+        return rand.nextInt(10) + 1;
     }
 
     private boolean randVertical() {
-        // TODO implement
-        return false;
+        Random rand = new Random();
+        return rand.nextBoolean();
     }
 }
