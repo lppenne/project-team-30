@@ -4,32 +4,29 @@ public class Result {
 
 	private Ship target;
 	private Square location;
-	private AttackStatus status;
+	private AttackStatus result;
 
 	public AttackStatus getResult() {
-		//TODO implement
-		return null;
+		return result;
 	}
 
 	public void setResult(AttackStatus result) {
-		//TODO implement
+		this.result = result;
 	}
 
 	public Ship getShip() {
-		//TODO implement
-		return null;
+		return target;
 	}
 
 	public void setShip(Ship ship) {
-		//TODO implement
+		target = ship;
 	}
 
 	public Square getLocation() {
-		//TODO implement
-		return null;
+		return location;
 	}
 
 	public void setLocation(Square square) {
-		//TODO implement
+		location = square;
 	}
 }
