@@ -5,19 +5,35 @@ import java.util.List;
 
 public class Board {
 
+	private List<Result> attacks;
+	private List<Ship> ships;
+
+	private final String chars = "ABCDEFGHIJ";
+
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public Board() {
 		// TODO Implement
+		this.attacks = new ArrayList<>();
+		this.ships = new ArrayList<>();
 	}
 
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public boolean placeShip(Ship ship, int x, char y, boolean isVertical) {
-		// TODO Implement
-		return false;
+		int shipLength = ship.getOccupiedSquares().size();
+		int columnIndex = this.chars.indexOf(y) + 1;
+
+		int maxIndex = 10 - shipLength + 1;
+
+		if (isVertical && x > maxIndex || !isVertical && columnIndex > maxIndex) {
+			return false;
+		}
+
+		ships.add(ship);
+		return true;
 	}
 
 	/*
@@ -29,8 +45,7 @@ public class Board {
 	}
 
 	public List<Ship> getShips() {
-		//TODO implement
-		return null;
+		return this.ships;
 	}
 
 	public void setShips(List<Ship> ships) {
@@ -38,8 +53,7 @@ public class Board {
 	}
 
 	public List<Result> getAttacks() {
-		//TODO implement
-		return null;
+		return this.attacks;
 	}
 
 	public void setAttacks(List<Result> attacks) {
