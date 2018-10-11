@@ -26,14 +26,37 @@ public class Board {
 		int shipLength = ship.getOccupiedSquares().size();
 		int columnIndex = this.chars.indexOf(y) + 1;
 
+		// Maximum index the row or column can be based on ship length
 		int maxIndex = 10 - shipLength + 1;
 
+		// Check if ship is placed outside boundaries
 		if (isVertical && x > maxIndex || !isVertical && columnIndex > maxIndex) {
-			return false;
+			if (checkOverlap(ship)) {
+				return false;
+			}
 		}
 
+		// Add ship to ships array
 		ships.add(ship);
+
 		return true;
+	}
+
+	private boolean checkOverlap(Ship newShip) {
+		// Iterate over existing ships
+		for (Ship ship : this.ships) {
+			// Iterate over occupied squares in existing ship
+			for (Square s1 : ship.getOccupiedSquares()) {
+				// Iterate over squares in new ship
+				for (Square s2 : newShip.getOccupiedSquares()) {
+					// Return true if a square in the new ship overlaps with an existing ship
+					if (s1.getColumn() == s2.getColumn() && s1.getRow() == s2.getRow()) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 
 	/*
