@@ -8,8 +8,6 @@ public class Board {
 	private List<Result> attacks;
 	private List<Ship> ships;
 
-	private final String chars = "ABCDEFGHIJ";
-
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
@@ -23,14 +21,34 @@ public class Board {
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public boolean placeShip(Ship ship, int x, char y, boolean isVertical) {
+		// Get length of ship
 		int shipLength = ship.getOccupiedSquares().size();
-		int columnIndex = this.chars.indexOf(y) + 1;
 
-		// Maximum index the row or column can be based on ship length
-		int maxIndex = 10 - shipLength + 1;
+		// Convert column char to integer
+		int columnIndex = ((int) y) - 64;
 
-		// Check if ship is placed outside boundaries
-		if (isVertical && x > maxIndex || !isVertical && columnIndex > maxIndex || checkOverlap(ship)) {
+		// Define start and end indexes
+		int startIndex = isVertical ? x : columnIndex;
+		int endIndex = startIndex + shipLength - 1;
+
+		// Check if ship is placed outside of board
+		if (endIndex > 10) {
+			return false;
+		}
+
+		// Add squares to ship
+		for (int i = startIndex; i <= endIndex; i++) {
+			Square square;
+			if (isVertical) {
+				square = new Square(i, y);
+			} else {
+				char c = (char) (i + 64);
+				square = new Square(x, c);
+			}
+		}
+
+		// Check if new ship overlaps with existing ships
+		if (checkOverlap(ship)) {
 			return false;
 		}
 
