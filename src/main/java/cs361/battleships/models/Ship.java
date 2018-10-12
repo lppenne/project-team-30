@@ -19,14 +19,19 @@ public class Ship {
 	public Ship(String kind) {
         this.kind = kind;
 
-        if (this.kind.equals("MINESWEEPER")) {
-            size = 2;
-        } else if (this.kind.equals("DESTROYER")) {
-            size = 3;
-        } else if (this.kind.equals("BATTLESHIP")) {
-            size = 4;
-        } else {
-            size = 0;
+        switch (this.kind) {
+            case "MINESWEEPER":
+                size = 2;
+                break;
+            case "DESTROYER":
+                size = 3;
+                break;
+            case "BATTLESHIP":
+                size = 4;
+                break;
+            default:
+                size = 0;
+                break;
         }
 
         occupiedSquares = new ArrayList<>(size);

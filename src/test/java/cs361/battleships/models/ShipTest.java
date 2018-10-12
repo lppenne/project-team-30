@@ -15,8 +15,6 @@ public class ShipTest {
         // test kind setting works
         Ship ship = new Ship("BATTLESHIP");
         assertEquals(ship.getKind(), "BATTLESHIP");
-        // test getting occupiedSquares works
-        assertTrue(ship.getOccupiedSquares() instanceof List);
         // test initial size of occupiedSquare
         assertEquals(4, ship.getSize());
     }
