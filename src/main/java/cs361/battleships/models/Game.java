@@ -2,6 +2,8 @@ package cs361.battleships.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Random;
+
 import static cs361.battleships.models.AttackStatus.*;
 
 public class Game {
@@ -46,18 +48,24 @@ public class Game {
         return true;
     }
 
-    private char randCol() {
-        // TODO implement
-        return 'X';
+    // All three of these are public. I can't think of a reason why they should specifically be private,
+    // also, it makes testing easier
+    public char randCol() {
+        Random rand = new Random();
+        // Grid of size 10 is hardcoded into this. TODO: make grid size a seperately defined constant
+        int someNumber = rand.nextInt(10) + 65;
+        char theCol = (char)someNumber;
+        return theCol;
     }
 
-    private int randRow() {
-        // TODO implement
-        return 0;
+    public int randRow() {
+        Random rand = new Random();
+        // This is also hardcoded as a grid size of 10
+        return rand.nextInt(10) + 1;
     }
 
-    private boolean randVertical() {
-        // TODO implement
-        return false;
+    public boolean randVertical() {
+        Random rand = new Random();
+        return rand.nextBoolean();
     }
 }
