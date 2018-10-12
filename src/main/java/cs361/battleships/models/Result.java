@@ -2,30 +2,45 @@ package cs361.battleships.models;
 
 public class Result {
 
+	private Ship target;
+	private Square location;
+	private AttackStatus result;
+
+	// Default constructor. Must use getters and setters to initialize values if this is used.
+	public Result () {}
+
+	public Result (Square location, AttackStatus result, Ship target) {
+		// Set result location to passed location
+		this.location = location;
+
+		// Set result to passed result. Should be a valid attack status.
+		this.result = result;
+
+		// Sets the target to be the hit ship. If the attack had a MISS status, this should be NULL.
+		this.target = target;
+	}
+
 	public AttackStatus getResult() {
-		//TODO implement
-		return null;
+		return result;
 	}
 
 	public void setResult(AttackStatus result) {
-		//TODO implement
+		this.result = result;
 	}
 
 	public Ship getShip() {
-		//TODO implement
-		return null;
+		return target;
 	}
 
 	public void setShip(Ship ship) {
-		//TODO implement
+		target = ship;
 	}
 
 	public Square getLocation() {
-		//TODO implement
-		return null;
+		return location;
 	}
 
 	public void setLocation(Square square) {
-		//TODO implement
+		location = square;
 	}
 }
